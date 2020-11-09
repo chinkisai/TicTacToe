@@ -11,9 +11,13 @@ import com.game.tictactoe.model.Player;
 import static com.game.tictactoe.utility.StringUtility.stringFromNumbers;
 
 public class GameViewModel extends ViewModel {
+    // Observable array map for data binding
     public ObservableArrayMap<String, String> cells;
+
+    // Game board where player will play game
     private GameBoard gameBoard;
 
+    // Initialize game baord and cell
     public void init(String player1, String player2) {
         gameBoard = new GameBoard(player1, player2);
         cells = new ObservableArrayMap<>();
@@ -30,7 +34,7 @@ public class GameViewModel extends ViewModel {
                 gameBoard.switchPlayer();
         }
     }
-
+    // to observe the winner of game
     public LiveData<Player> getWinner() {
         return gameBoard.winner;
     }

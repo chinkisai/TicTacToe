@@ -20,24 +20,32 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class GameStartDialog extends DialogFragment {
 
+    // holding label player1
     private TextInputLayout player1Layout;
+    // holding label player1
     private TextInputLayout player2Layout;
 
+    // Taking name of player1 from user
     private TextInputEditText player1EditText;
+    // Taking name of player2 from user
     private TextInputEditText player2EditText;
 
+    // To store the name of player1
     private String player1;
+    // To store the name of player2
     private String player2;
 
     private View rootView;
     private MainActivity activity;
 
+    // for create dialog
     public static GameStartDialog newInstance(MainActivity activity) {
         GameStartDialog dialog = new GameStartDialog();
         dialog.activity = activity;
         return dialog;
     }
 
+    // Showing the dialog to take the name of player and providing option to start the game
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -56,6 +64,7 @@ public class GameStartDialog extends DialogFragment {
         return alertDialog;
     }
 
+    // Initialize the vale of TextView and EditText
     private void initViews() {
         rootView = LayoutInflater.from(getContext())
                 .inflate(R.layout.game_start_dialog, null, false);
@@ -67,19 +76,24 @@ public class GameStartDialog extends DialogFragment {
         player2EditText = rootView.findViewById(R.id.et_player2);
         addTextWatchers();
     }
+
+    // start option in dialog for start the game
     private void onDialogShow(AlertDialog dialog) {
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(v -> {
-            onDoneClicked();
+            onStartClicked();
         });
     }
 
-    private void onDoneClicked() {
+    // Start the game on click of start if entered name of players is valid
+    private void onStartClicked() {
         if (isAValidName(player1Layout, player1) & isAValidName(player2Layout, player2)) {
             activity.onPlayersSet(player1, player2);
             dismiss();
         }
     }
+
+// Checking entered name is valid or not
     private boolean isAValidName(TextInputLayout layout, String name) {
         if (TextUtils.isEmpty(name)) {
             layout.setErrorEnabled(true);
@@ -98,6 +112,7 @@ public class GameStartDialog extends DialogFragment {
         return true;
     }
 
+    // text watcher for EditText of player1
     private void addTextWatchers() {
         player1EditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -113,6 +128,8 @@ public class GameStartDialog extends DialogFragment {
                 player1 = s.toString();
             }
         });
+
+        // text watcher for EditText of player2
         player2EditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
