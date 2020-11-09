@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="gameViewModel"
+        type="com.game.tictactoe.viewmodel.GameViewModel" />
+</data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        tools:context=".view.MainActivity">
+
+        <Button
+            android:id="@+id/cell_00"
+            android:text='@{gameViewModel.cells["00"]}'
+            android:onClick="@{() -> gameViewModel.onClickedCellAt(0,0)}"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintVertical_chainStyle="packed"
+            style="@style/StyleCellButton"
+            android:background="@drawable/cell_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cell_10"
+            app:layout_constraintEnd_toStartOf="@+id/cell_01"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/cell_01"
+            android:text='@{gameViewModel.cells["01"]}'
+            android:onClick="@{()->gameViewModel.onClickedCellAt(0,1)}"
+            app:layout_constraintVertical_chainStyle="packed"
+            style="@style/StyleCellButton"
+            android:background="@drawable/cell_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cell_11"
+            app:layout_constraintEnd_toStartOf="@+id/cell_02"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cell_00"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/cell_02"
+            android:text='@{gameViewModel.cells["02"]}'
+            android:onClick="@{()->gameViewModel.onClickedCellAt(0,2)}"
+            app:layout_constraintVertical_chainStyle="packed"
+            style="@style/StyleCellButton"
+            android:background="@drawable/cell_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cell_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cell_01"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/cell_10"
+            android:text='@{gameViewModel.cells["10"]}'
+            android:onClick="@{()->gameViewModel.onClickedCellAt(1,0)}"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            style="@style/StyleCellButton"
+            android:background="@drawable/cell_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cell_20"
+            app:layout_constraintEnd_toStartOf="@+id/cell_11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cell_00" />
+
+        <Button
+            android:id="@+id/cell_11"
+            android:text='@{gameViewModel.cells["11"]}'
+            android:onClick="@{()->gameViewModel.onClickedCellAt(1,1)}"
+            style="@style/StyleCellButton"
+            android:background="@drawable/cell_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cell_21"
+            app:layout_constraintEnd_toStartOf="@+id/cell_12"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cell_10"
+            app:layout_constraintTop_toBottomOf="@+id/cell_01" />
+
+        <Button
+            android:id="@+id/cell_12"
+            android:text='@{gameViewModel.cells["12"]}'
+            android:onClick="@{()->gameViewModel.onClickedCellAt(1,2)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/StyleCellButton"
+            android:background="@drawable/cell_background"
+            app:layout_constraintBottom_toTopOf="@+id/cell_22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cell_11"
+            app:layout_constraintTop_toBottomOf="@+id/cell_02" />
+
+
+        <Button
+            android:id="@+id/cell_20"
+            android:text='@{gameViewModel.cells["20"]}'
+            android:onClick="@{()->gameViewModel.onClickedCellAt(2,0)}"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            style="@style/StyleCellButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cell_21"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cell_10" />
+
+        <Button
+            android:id="@+id/cell_21"
+            android:text='@{gameViewModel.cells["21"]}'
+            android:onClick="@{()->gameViewModel.onClickedCellAt(2,1)}"
+            style="@style/StyleCellButton"
+            android:background="@drawable/cell_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cell_22"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cell_20"
+            app:layout_constraintTop_toBottomOf="@+id/cell_11" />
+
+        <Button
+            android:id="@+id/cell_22"
+            android:text='@{gameViewModel.cells["22"]}'
+            android:onClick="@{()->gameViewModel.onClickedCellAt(2,2)}"
+            style="@style/StyleCellButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cell_21"
+            app:layout_constraintTop_toBottomOf="@+id/cell_12" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
