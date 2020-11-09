@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         initDataBinding(player1, player2);
     }
 
+    // Binding view with ViewModel
     private void initDataBinding(String player1, String player2) {
         ActivityMainBinding activityGameBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         // creating instance of ViewModel using ViewModelProvider
